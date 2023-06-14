@@ -49,56 +49,56 @@ def get_prediction():
     # Map the predicted value to the corresponding choice and return it
     # The file labels.txt determines the order of the list
     choice_list = ['Rock', 'Paper', 'Scissors', 'Nothing'] 
-    user_choice = str(choice_list[choice]) 
-    return user_choice
+    user_prediction = str(choice_list[choice]) 
+    return user_prediction
 
-def get_winner(computer_choice, user_choice):
+def get_winner(computer_choice, user_prediction):
     valid_choices = ["Rock", "Paper", "Scissors"]
 
     # Check if user's choice is valid
-    if user_choice not in valid_choices:
+    if user_prediction not in valid_choices:
         return "Invalid choice! Please choose Rock, Paper, or Scissors."
     # Check for tie
-    elif user_choice == computer_choice:
+    elif user_prediction == computer_choice:
         return "It's a tie!"
     # Check for user win conditions
-    elif (user_choice == 'Rock' and computer_choice == 'Scissors') or \
-            (user_choice == 'Paper' and computer_choice == 'Rock') or \
-            (user_choice == 'Scissors' and computer_choice == 'Paper'):
+    elif (user_prediction == 'Rock' and computer_choice == 'Scissors') or \
+            (user_prediction == 'Paper' and computer_choice == 'Rock') or \
+            (user_prediction == 'Scissors' and computer_choice == 'Paper'):
         return "You won!"
     else:
         return "You lost"
 
 def play():
     # Play a 3-round game of Rock Paper Scissors    
-    computer_score = 0 # Initialise scores
-    user_score = 0
+    computer_wins = 0 # Initialise scores
+    user_wins = 0
     while True:
         # Get computer and user choices for this round and determine the winner 
         computer_choice = get_computer_choice()
-        user_choice = get_prediction()
-        result = get_winner(computer_choice, user_choice)
+        user_prediction = get_prediction()
+        result = get_winner(computer_choice, user_prediction)
 
         # Print user's choice, computer's choice, and the result of the round
-        print("You chose: " + user_choice)
+        print("You chose: " + user_prediction)
         print("The computer chose: " + computer_choice)
         print("This round: " + result)
 
         # Update scores based on the result
         if result == "You won!":
-            user_score += 1
+            user_wins += 1
         elif result == "You lost!":
-            computer_score += 1
+            computer_wins += 1
 
         # Print the current score
-        print("The score is: " + str(user_score) + " to " + str(computer_score))
+        print("The score is: " + str(user_wins) + " to " + str(computer_wins))
 
         # Check if any player has reached a score of 3 and end the game
-        if user_score == 3 or computer_score == 3:
+        if user_wins == 3 or computer_wins == 3:
             break
 
     # Print the final result of the game
-    if user_score == 3:
+    if user_wins == 3:
         print("Congratulations! You won the game!")
     else:
         print("Game over. You lost the game.")
