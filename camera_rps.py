@@ -9,7 +9,7 @@ def get_computer_choice():
     computer_choice = random.choice(['Rock', 'Paper', 'Scissors'])
     return computer_choice
 
-def get_user_choice():
+def get_prediction():
     # Load the model and start the webcam feed for capturing images to predict the user's choice    
     model = load_model('keras_model.h5')
     cap = cv2.VideoCapture(0)
@@ -76,7 +76,7 @@ def play():
     while True:
         # Get computer and user choices for this round and determine the winner 
         computer_choice = get_computer_choice()
-        user_choice = get_user_choice()
+        user_choice = get_prediction()
         result = get_winner(computer_choice, user_choice)
 
         # Print user's choice, computer's choice, and the result of the round

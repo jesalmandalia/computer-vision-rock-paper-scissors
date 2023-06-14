@@ -13,7 +13,7 @@ This game could be improved by training over a more diverse set of images. To im
 	- [get\_winner(computer\_choice, user\_choice)](#get_winnercomputer_choice-user_choice)
 	- [play()](#play)
 - [Using the camera to play Rock Paper Scissors](#using-the-camera-to-play-rock-paper-scissors)
-	- [New get\_user\_choice()](#new-get_user_choice)
+	- [get\_prediction()](#get_prediction)
 	- [New play()](#new-play)
 - [How To Run](#how-to-run)
 	- [Getting Started](#getting-started)
@@ -48,10 +48,10 @@ The `play()` function simulates the game by calling the necessary functions. It 
 
 # Using the camera to play Rock Paper Scissors
 
-The `camera_rps.py` file builds from computer vision model and the manual rock paper scissors game to simulate a rock, paper and scissors game by using webcam input from the user. This enhances the user experience by making the game more interactive. To do this the previously described `get_user_choice()` function and the `play()` function were modified. 
+The `camera_rps.py` file builds from computer vision model and the manual rock paper scissors game to simulate a rock, paper and scissors game by using webcam input from the user. This enhances the user experience by making the game more interactive. To do this the previously described `play()` function was modified and a new function `get_prediction()` is introduced. 
 
-## New get_user_choice()
-The `get_user_choice()` function loads the computer vision model created in the previous section [Creating the Computer Vision System](#creating-the-computer-vision-system). The model is loaded using the Keras library. 
+## get_prediction()
+The `get_prediction()` function loads the computer vision model created in the previous section [Creating the Computer Vision System](#creating-the-computer-vision-system). The model is loaded using the Keras library. 
 
 To capture the user's hand gesture, the function initialises the webcam capture using OpenCV (cv2). Each frame captured is also resized to match a defined frame size and normalised for prediction. The processed frame is then fed into the model and the gesture with the highest prediction confidence is selected as the user's choice. The corresponding choice (Rock, Paper, Scissors, Nothing) is returned as a string.
 
