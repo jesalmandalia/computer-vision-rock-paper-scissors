@@ -3,6 +3,7 @@ Rock, paper, scissors is a classic game played between two people to settle disp
 
 In this implementation of the game, I introduce an interactive twist where the user can play against the computer by making hand gestures in front of their camera.
 
+This game could be improved by training over a more diverse set of images. To improve user experience a countdown could be added to the webcam display or sounds could be added after each round indicating if they won or lost. 
 
 
 - [Creating the Computer Vision System](#creating-the-computer-vision-system)
@@ -12,8 +13,8 @@ In this implementation of the game, I introduce an interactive twist where the u
 	- [get\_winner(computer\_choice, user\_choice)](#get_winnercomputer_choice-user_choice)
 	- [play()](#play)
 - [Using the camera to play Rock Paper Scissors](#using-the-camera-to-play-rock-paper-scissors)
-	- [Updated get\_user\_choice()](#updated-get_user_choice)
-	- [Updated play()](#updated-play)
+	- [New get\_user\_choice()](#new-get_user_choice)
+	- [New play()](#new-play)
 - [How To Run](#how-to-run)
 	- [Getting Started](#getting-started)
 		- [Clone the Repository](#clone-the-repository)
@@ -47,17 +48,16 @@ The `play()` function simulates the game by calling the necessary functions. It 
 
 # Using the camera to play Rock Paper Scissors
 
-Finally, I put together the computer vision model and the manual rock paper scissors game. This involved modifying the `get_user_choice()` function and the `play()` function.
+The `camera_rps.py` file builds from computer vision model and the manual rock paper scissors game to simulate a rock, paper and scissors game by using webcam input from the user. This enhances the user experience by making the game more interactive. To do this the previously described `get_user_choice()` function and the `play()` function were modified. 
 
-## Updated get_user_choice()
+## New get_user_choice()
 The `get_user_choice()` function loads the computer vision model created in the previous section [Creating the Computer Vision System](#creating-the-computer-vision-system). The model is loaded using the Keras library. 
 
 To capture the user's hand gesture, the function initialises the webcam capture using OpenCV (cv2). Each frame captured is also resized to match a defined frame size and normalised for prediction. The processed frame is then fed into the model and the gesture with the highest prediction confidence is selected as the user's choice. The corresponding choice (Rock, Paper, Scissors, Nothing) is returned as a string.
 
-## Updated play()
+## New play()
 
 The `play()` function is responsible for executing a multiple-round game of Rock Paper Scissors between the player and the computer. It initiates the round, keeps track of the scores and determines the final winner at the end of the game. The function uses a while loop to allow multiple rounds of the game to be played. This loop breaks when either the player or the computer reaches a score of 3. A score update is also displayed for the user to keep track of the score between rounds. 
-
 
 # How To Run
 
@@ -104,9 +104,6 @@ During the gameplay, a real-time webcam feed will be displayed in a frame. Using
 
 When either you or the computer reach 3 wins the game ends. The following screenshot is an example of the game end.
 ![Screenshot 1](screenshots/example_end.png)
-
-
-
 
 
 
