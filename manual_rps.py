@@ -24,8 +24,8 @@ def get_winner(computer_choice, user_choice):
         print("You won!")
     elif computer_choice == 'Scissors' and user_choice == 'Paper':
         print("You lost!")
-    else:   
-        print("Invalid input!") 
+    #else:   
+    #    print("Invalid input!") 
         
 def play():
     computer_choice = get_computer_choice()
