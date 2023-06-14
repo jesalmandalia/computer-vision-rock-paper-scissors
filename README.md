@@ -6,6 +6,7 @@ In this implementation of the game, I introduce an interactive twist where the u
 This game could be improved by training over a more diverse set of images. To improve user experience a countdown could be added to the webcam display or sounds could be added after each round indicating if they won or lost. 
 
 
+
 - [Creating the Computer Vision System](#creating-the-computer-vision-system)
 - [Creating a Rock Paper Scissors Game](#creating-a-rock-paper-scissors-game)
 	- [get\_computer\_choice()](#get_computer_choice)
@@ -14,11 +15,16 @@ This game could be improved by training over a more diverse set of images. To im
 	- [play()](#play)
 - [Using the camera to play Rock Paper Scissors](#using-the-camera-to-play-rock-paper-scissors)
 	- [get\_prediction()](#get_prediction)
-	- [New play()](#new-play)
+	- [Updated play()](#updated-play)
 - [How To Run](#how-to-run)
 	- [Getting Started](#getting-started)
 		- [Clone the Repository](#clone-the-repository)
+		- [Install Dependencies](#install-dependencies)
+	- [Run The Game](#run-the-game)
 	- [Example Gameplay](#example-gameplay)
+
+
+
 
 # Creating the Computer Vision System
 
@@ -55,9 +61,9 @@ The `get_prediction()` function loads the computer vision model created in the p
 
 To capture the user's hand gesture, the function initialises the webcam capture using OpenCV (cv2). Each frame captured is also resized to match a defined frame size and normalised for prediction. The processed frame is then fed into the model and the gesture with the highest prediction confidence is selected as the user's choice. The corresponding choice (Rock, Paper, Scissors, Nothing) is returned as a string.
 
-## New play()
+## Updated play()
 
-The `play()` function is responsible for executing a multiple-round game of Rock Paper Scissors between the player and the computer. It initiates the round, keeps track of the scores and determines the final winner at the end of the game. The function uses a while loop to allow multiple rounds of the game to be played. This loop breaks when either the player or the computer reaches a score of 3. A score update is also displayed for the user to keep track of the score between rounds. 
+The `play()` function is responsible for executing a multiple-round game of Rock Paper Scissors between the player and the computer. It initiates the round, keeps track of the wins and determines the final winner at the end of the game. The function uses a while loop to allow multiple rounds of the game to be played. This loop breaks when either the player or the computer reaches 3 wins. A score update is also displayed for the user to keep track of the wins between rounds. 
 
 # How To Run
 
@@ -73,19 +79,20 @@ To run the game on your local machine follow these steps:
 
    ```bash
 	git clone https://github.com/your-username/rock-paper-scissors.git
+   ```
 
 Replace 'your-username' with your GitHub username.
 
 ### Install Dependencies
 
-Ensure you have Python installed on your machine. Navigate to the cloned repository's directory and stall the required Python dependencies using pip:
-
-   ```bash
+Ensure you have Python installed on your machine. Navigate to the cloned repository's directory and stall the required Python dependencies using pip.
+``` bash
 	pip install requirements.txt
-   ```	
+```
+
 This will install the necessary packages specified in the requirements.txt file.
 
-## Run the Game
+## Run The Game
 
 1. Ensure your webcam is connected to your machine.
 2. Run the following command to execute the game from the project directory:
