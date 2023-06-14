@@ -67,7 +67,7 @@ def get_winner(computer_choice, user_choice):
             (user_choice == 'Scissors' and computer_choice == 'Paper'):
         return "You won!"
     else:
-        return "You lost!"
+        return "You lost"
 
 def play():
     # Play a 3-round game of Rock Paper Scissors    
