@@ -78,14 +78,12 @@ To run the game on your local machine follow these steps:
 3. Run the following command to clone the repository:
 
    ```bash
-	git clone https://github.com/your-username/rock-paper-scissors.git
+	git clone https://github.com/jesalmandalia/computer-vision-rock-paper-scissors.git
    ```
-
-Replace 'your-username' with your GitHub username.
 
 ### Install Dependencies
 
-Ensure you have Python installed on your machine. Navigate to the cloned repository's directory and stall the required Python dependencies using pip.
+Ensure you have Python installed on your machine. Navigate to the cloned repository's directory and install the required Python dependencies using pip.
 ``` bash
 	pip install requirements.txt
 ```
