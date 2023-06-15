@@ -9,19 +9,17 @@ class RockPaperScissors:
     This class is used to play a game of Rock, Paper, Scissors against the computer.
     '''
     
-    def __init__(self, computer_player, user_player, wins=3):
+    def __init__(self, computer_player, user_player):
         '''
         Initialise the game.
                 
         Args:
             computer (ComputerPlayer): The computer's player object.
             user (UserPlayer): The user's player object. 
-            wins (int): Number of wins required to win the game (default: 3)
         '''
         self.computer = computer_player
         self.user = user_player
-        self.wins = wins
-        
+            
     def get_winner(self, computer_choice, user_prediction):
         '''
         Compare the computer's choice and the user's choice to determine the winner of the round.
@@ -68,10 +66,10 @@ class RockPaperScissors:
             print("This round: " + result)
             print("The score is: " + str(user_wins) + " to " + str(computer_wins))
             
-            if user_wins == self.wins or computer_wins == self.wins:
+            if user_wins == 3 or computer_wins == 3:
                 break
 
-        if user_wins == self.wins:
+        if user_wins == 3:
             print("Congratulations! You won the game!")
         else:
             print("Game over. You lost the game.")
@@ -144,9 +142,7 @@ class UserPlayer:
 
 
 # Start the game
-wins = 3 # Number of wins required to win the game
-
 computer_player = ComputerPlayer()
 user_player = UserPlayer()
-game = RockPaperScissors(computer_player, user_player, wins)
+game = RockPaperScissors(computer_player, user_player)
 game.play()
