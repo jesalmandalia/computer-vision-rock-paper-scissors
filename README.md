@@ -14,8 +14,9 @@ This game could be improved by training over a more diverse set of images. To im
 	- [get\_winner(computer\_choice, user\_choice)](#get_winnercomputer_choice-user_choice)
 	- [play()](#play)
 - [Using the camera to play Rock Paper Scissors](#using-the-camera-to-play-rock-paper-scissors)
-	- [get\_prediction()](#get_prediction)
-	- [Updated play()](#updated-play)
+	- [Class: RockPaperScissors](#class-rockpaperscissors)
+	- [Class: ComputerPlayer](#class-computerplayer)
+	- [Class: UserPlayer](#class-userplayer)
 - [How To Run](#how-to-run)
 	- [Getting Started](#getting-started)
 		- [Clone the Repository](#clone-the-repository)
@@ -46,7 +47,7 @@ The `get_computer_choice()` function randomly selects between "rock", "paper" an
 The `get_user_choice()` function asks the user to input their choice. The user's choice is then converted into lowercase for consistency. The user's choice is returned as a string.
 
 ## get_winner(computer_choice, user_choice)
-The `get_winner(computer_choice, user_choice)` function takes two arguments, `get_computer_choice()` and `get_user_choice()`. The computer and user choice is compared and the winner following the game logic is decided. If the user wins "You won!" is printed and if the user loses "You lost" is printed. When the user and the computer have made the same choice "It is a tie!" is printed. If none of these conditions is met then there is an error with the user input and a message saying "Invalid choice! Please choose Rock, Paper, or Scissors." is printed. 
+The `get_winner(computer_choice, user_choice)` function takes two arguments, `computer_choice` and `user_choice`. The computer and user choice is compared and the winner following the game logic is decided. If the user wins "You won!" is printed and if the user loses "You lost" is printed. When the user and the computer have made the same choice "It is a tie!" is printed. If none of these conditions is met then there is an error with the user input and a message saying "Your choice was not recognised. Please try again!" is printed. 
 
 ## play()
 
@@ -54,16 +55,23 @@ The `play()` function simulates the game by calling the necessary functions. It 
 
 # Using the camera to play Rock Paper Scissors
 
-The `camera_rps.py` file builds from computer vision model and the manual rock paper scissors game to simulate a rock, paper and scissors game by using webcam input from the user. This enhances the user experience by making the game more interactive. To do this the previously described `play()` function was modified and a new function `get_prediction()` is introduced. 
+The `camera_rps.py` file builds from the computer vision model and the manual rock paper scissors game to simulate a rock, paper and scissors game by using webcam input from the user. This enhances the user experience by making the game more interactive. By introducing three classes, better encapsulation and organisation of the code is achieved.
 
-## get_prediction()
-The `get_prediction()` function loads the computer vision model created in the previous section [Creating the Computer Vision System](#creating-the-computer-vision-system). The model is loaded using the Keras library. 
+## Class: RockPaperScissors
 
-To capture the user's hand gesture, the function initialises the webcam capture using OpenCV (cv2). Each frame captured is also resized to match a defined frame size and normalised for prediction. The processed frame is then fed into the model and the gesture with the highest prediction confidence is selected as the user's choice. The corresponding choice (Rock, Paper, Scissors, Nothing) is returned as a string.
+The `get_winner(self, computer_choice, user_prediction)` method is based on the get_winner() function previously described [here](#get_winnercomputer_choice-user_choice).
 
-## Updated play()
+The `play(self)` method is responsible for executing a multiple-round game of Rock Paper Scissors between the player and the computer. It initiates the round, keeps track of the wins and determines the final winner at the end of the game. The method uses a while loop to allow multiple rounds of the game to be played. This loop breaks when either the player or the computer reaches 3 wins. A score update is also displayed for the user to keep track of the wins between rounds. 
 
-The `play()` function is responsible for executing a multiple-round game of Rock Paper Scissors between the player and the computer. It initiates the round, keeps track of the wins and determines the final winner at the end of the game. The function uses a while loop to allow multiple rounds of the game to be played. This loop breaks when either the player or the computer reaches 3 wins. A score update is also displayed for the user to keep track of the wins between rounds. 
+## Class: ComputerPlayer
+This class represents the computer's choice.
+
+The `get_computer_choice(self)` method randomly generates the computer's choice of Rock, Paper, or Scissors.
+
+## Class: UserPlayer
+This class represents the user's choice
+
+The `get_prediction(self)` method loads the computer vision model created in the previous section [Creating the Computer Vision System](#creating-the-computer-vision-system). The model is loaded using the Keras library. To capture the user's hand gesture, the method initialises the webcam capture using OpenCV (cv2). Each frame captured is also resized to match a defined frame size and normalised for prediction. The processed frame is then fed into the model and the gesture with the highest prediction confidence is selected as the user's choice. The corresponding choice (Rock, Paper, Scissors, Nothing) is returned as a string.
 
 # How To Run
 
